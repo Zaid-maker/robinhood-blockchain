@@ -25,11 +25,12 @@ const style = {
   noticeContainer: "flex-1",
   noticeTitle: "text-gray-500",
   noticeMessage: "text-white text-bold",
+  noticeCTA: "font-bold text-green-500 cursor-pointer mt-5",
   rightMain:
     "flex flex-col flex-1 h-4/5 bg-[#1E2123] mt-6 rounded-lg overflow-y-scroll noScroll",
-  rightMainItem: "flex items-center text-white border-b border-[#30363b]",
-  ItemTitle: "",
-  moreOptions: "",
+  rightMainItem: "flex items-center text-white p-5 border-b border-[#30363b]",
+  ItemTitle: "flex-1 text-bold",
+  moreOptions: "cursor-pointer text-xl",
 };
 
 export default function Home() {
