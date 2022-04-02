@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Logo from "../assets/image-asset.png";
 import { AiOutlineSearch } from "react-icons/ai";
 
 const styles = {
@@ -16,10 +17,15 @@ const styles = {
   menuItem: "cursor-pointer font-bold hover:text-green-500 duration-300",
 };
 
+const isAuthenticated = true;
+const formattedAccount = "0x00";
+
 const Header = () => {
   return (
     <div className={styles.container}>
-      <div className={styles.leftHeader}>{/* Image */}</div>
+      <div className={styles.leftHeader}>
+        <Image src={Logo} height={100} width={100} className={styles.Logo} />
+      </div>
       <div className={styles.searchWrapper}>
         <div className={styles.searchInputContainer}>
           <AiOutlineSearch className={styles.searchIcon} />
@@ -33,9 +39,17 @@ const Header = () => {
         <div className={styles.menuItem}>Portfolio</div>
         <div className={styles.menuItem}>Cash</div>
         <div className={styles.menuItem}>Messages</div>
-        <div className={styles.menuItem} onClick={() => connectWallet()}>
-          Login
-        </div>
+        {isAuthenticated && (
+          <>
+            <div className={styles.menuItem}>{formattedAccount}</div>
+            <div className={styles.menuItem}>Logout</div>
+          </>
+        )}
+        {!isAuthenticated && (
+          <>
+            <div className={styles.menuItem}>Login</div>
+          </>
+        )}
       </div>
     </div>
   );
