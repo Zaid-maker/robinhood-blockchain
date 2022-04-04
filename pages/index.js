@@ -77,7 +77,7 @@ export default function Home() {
             <div className={style.ItemTitle}>Crypto Currency</div>
             <BiDotsHorizontalRounded className={style.moreOptions} />
           </div>
-          <Assets />
+          <Assets coin="BTC" price={0.08} />
 
           <div className={style.rightMainItem}>
             <div className={style.ItemTitle}>Lists</div>
