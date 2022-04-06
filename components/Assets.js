@@ -1,23 +1,21 @@
 import React from "react";
-//import { Line } from "react-chartjs-2";
-//import Chart from "chart.js";
+import { Line } from "react-chartjs-2";
 
 const styles = {
-  wrapper: "flex justify-between p-5 hover:bg-[#30363b] duration-300",
+  wrapper: "flex justify-between p-5  hover:bg-[#30363B] duration-300",
   container: "flex flex-col text-white items-center justify-center",
   name: "font-bold",
   chart: "w-36 h-full",
   price: "flex flex-col text-white",
-  percent: "text-green-500",
+  percent: "text-green-400",
 };
 
-const Assets = ({ coin, price }) => {
+const Asset = ({ coin, price }) => {
   const randomNumber = () => {
     let data = [];
-
     for (let i = 0; i < 9; i++) {
       let randomNum = Math.floor(Math.random() * 100);
-      data: [...data, randomNum];
+      data = [...data, randomNum];
     }
     return data;
   };
@@ -26,12 +24,12 @@ const Assets = ({ coin, price }) => {
     if (coin.change < 0) {
       return "#ef4b09";
     } else {
-      return "#00ffa";
+      return "#00ff1a";
     }
   };
 
   const data = {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    labels: [".", ".", ".", ".", ".", ".", ".", ".", ".", "."],
     datasets: [
       {
         fill: false,
@@ -58,12 +56,11 @@ const Assets = ({ coin, price }) => {
 
   const options = {
     plugins: {
-      legends: {
+      legend: {
         display: false,
       },
     },
   };
-
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
@@ -75,7 +72,7 @@ const Assets = ({ coin, price }) => {
         </div>
       </div>
       <div className={styles.price}>
-        <div>DUM{/* price */}</div>
+        <div>{price}</div>
         <div
           className={styles.percent}
           style={{ color: coin.change < 0 ? "#ef4b09" : "green" }}
@@ -87,4 +84,4 @@ const Assets = ({ coin, price }) => {
   );
 };
 
-export default Assets;
+export default Asset;

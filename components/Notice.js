@@ -14,7 +14,7 @@ const Notice = () => {
       <div className={styles.noticeContainer}>
         <div className={styles.noticeTitle}>Fund Your Account</div>
         <div className={styles.noticeMessage}>
-          Your bank account is ready Fund your Robinhood account to begin
+          Your bank account is ready! Fund your Robinhood account to begin
           trading.
         </div>
       </div>
