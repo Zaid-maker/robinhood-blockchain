@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.4;
+pragma solidity ^0.8.4;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -11,5 +11,7 @@ contract Btc is ERC20, Ownable {
         _mint(to, amount);
     }
 
-    receive() external payable {}
+    receive() external payable {
+        // accept ETH, do nothing as it would break the gas fee for a transaction
+    }
 }
