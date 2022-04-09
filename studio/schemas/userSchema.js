@@ -19,11 +19,10 @@ export const userSchema = {
       type: "array",
       of: [
         {
-          name: "reference",
+          type: "reference",
           to: [{ type: "transactions" }],
         },
       ],
     },
-    {},
   ],
 };
