@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { RobinhoodContext } from "../context/RobinhoodContext";
 
 const styles = {
   inputAmount: `w-1/2 flex items-center justify-center border border-white rounded-lg p-2 bg-transparent mt-6 text-white placeholder:text-white`,
@@ -9,14 +10,57 @@ const styles = {
 };
 
 const BuyTokens = () => {
+  const {
+    isAuthenticated,
+    setAmount,
+    mint,
+    setCoinSelect,
+    coinSelect,
+    amount,
+    toCoin,
+    setToCoin,
+  } = useContext(RobinhoodContext);
   return (
     <form className={styles.formContainer}>
-      <div className="flex flex-col items-center h-full w-full">
-        <select className={styles.select}>
-          <option className={styles.options}>BTC</option>
-          <option className={styles.options}>ETH</option>
-          <option className={styles.options}>SOL</option>
-          <option className={styles.options}>USDC</option>
+      <div className="flex h-full w-full flex-col items-center">
+        <select
+          className={styles.select}
+          value={coinSelect}
+          onChange={(e) => setCoinSelect(e.target.value)}
+        >
+          <option className={styles.options} value="BTC">
+            BTC
+          </option>
+          <option className={styles.options} value="ETH">
+            ETH
+          </option>
+          <option className={styles.options} value="DOGE">
+            DOGE
+          </option>
+          <option className={styles.options} value="SOL">
+            SOL
+          </option>
+          <option className={styles.options} value="USDC">
+            USDC
+          </option>
+        </select>
+        <select
+          className={styles.select}
+          value={coinSelect}
+          onChange={(e) => setCoinSelect(e.target.value)}
+        >
+          <option className={styles.options} value="BTC">
+            BTC
+          </option>
+          <option className={styles.options} value="DOGE">
+            DOGE
+          </option>
+          <option className={styles.options} value="SOL">
+            SOL
+          </option>
+          <option className={styles.options} value="USDC">
+            USDC
+          </option>
         </select>
         <input
           placeholder="Amount......"

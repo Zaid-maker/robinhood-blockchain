@@ -59,6 +59,58 @@ export const RobinhoodProvider = ({ children }) => {
     })();
   }, [currentAccount]);
 
+  const getContractAddress = () => {
+    if (coinSelect === "BTC") return bitcoinAddress;
+    if (coinSelect === "SOL") return solanaAddress;
+    if (coinSelect === "USDC") return usdcAddress;
+    if (coinSelect === "DOGE") return dogeAddress;
+  };
+
+  const getToAddress = () => {
+    if (toCoin === "BTC") return bitcoinAddress;
+    if (toCoin === "SOL") return solanaAddress;
+    if (toCoin === "USDC") return usdcAddress;
+    if (toCoin === "DOGE") return dogeAddress;
+  };
+
+  const getToAbi = () => {
+    if (toCoin === "BTC") return bitcoinAbi;
+    if (toCoin === "SOL") return solanaAbi;
+    if (toCoin === "USDC") return usdcAbi;
+    if (toCoin === "DOGE") return dogeAbi;
+  };
+
+  const mint = async () => {
+    try {
+      if (coinSelect === "ETH") {
+        if (!isAuthenticated) return;
+        await Moralis.enableWeb3();
+        const contractAddress = getToAddress();
+        const abi = getToAbi();
+
+        let options = {
+          contractAddress: contractAddress,
+          functionName: "mint",
+          abi: abi,
+          params: {
+            to: currentAccount,
+            account: Moralis.Units.Token("50", "18"),
+          },
+        };
+        //sendEth();
+        const transaction = await Moralis.executeFunction(options);
+        const receipt = await transaction.wait(4);
+        console.log(receipt);
+        //saveTransaction(receipt.transactionHash, amount, receipt.to)
+      } else {
+        swapTokens();
+        //saveTransaction(receipt.transactionHash, amount, receipt.to)
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const connectWallet = async () => {
     authenticate();
   };
@@ -71,10 +123,17 @@ export const RobinhoodProvider = ({ children }) => {
     <RobinhoodContext.Provider
       value={{
         connectWallet,
-        signOut,
         currentAccount,
+        signOut,
         isAuthenticated,
         formattedAccount,
+        setAmount,
+        setCoinSelect,
+        coinSelect,
+        balance,
+        amount,
+        toCoin,
+        setToCoin,
       }}
     >
       {children}

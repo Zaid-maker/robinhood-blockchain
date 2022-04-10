@@ -16,7 +16,7 @@ const main = async () => {
   await dogeContract.deployed();
   console.log("Solana deployed to", solanaContract.address);
 
-  const usdcFactory = await ethers.getContractFactory("Usdc");
+  const usdcFactory = await ethers.getContractFactory("usdc");
   const usdcContract = await usdcFactory.deploy();
   await dogeContract.deployed();
   console.log("Usdc deployed to", usdcContract.address);
