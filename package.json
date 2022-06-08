@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@sanity/client": "^3.3.0",
+    "@sanity/client": "^3.3.2",
     "chart.js": "^3.7.1",
     "dotenv": "^16.0.0",
     "moralis": "^1.5.11",
